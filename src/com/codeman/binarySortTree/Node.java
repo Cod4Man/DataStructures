@@ -30,6 +30,38 @@ public class Node {
     }
 
     /**
+     * 找树最小点
+     * @return
+     */
+    public Node findMinNode() {
+        if (this.left != null) {
+            return this.left.findMinNode();
+        } else {
+            return this;
+        }
+    }
+
+    /**
+     * 查找该节点的父节点
+     * @param node
+     * @return
+     */
+    public Node findParentNode(Node node) {
+        if ((this.left != null && this.left.no == node.no)
+        || (this.right != null && this.right.no == node.no)) {
+            return this;
+        } else {
+            if (this.right != null && this.no < node.no) { // 向右递归
+                return this.right.findParentNode(node);
+            } else if (this.left != null && this.no >= node.no) { // 向左递归
+                return this.left.findParentNode(node);
+            } else {
+                return null;
+            }
+        }
+    }
+
+    /**
      * 找节点：BST
      * @param node
      */
