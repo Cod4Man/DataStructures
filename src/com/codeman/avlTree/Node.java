@@ -94,11 +94,19 @@ public class Node {
 
         // 如果右树高，则左旋转
         if (this.rightHeight() - this.leftHeight() > 1) {
+            // 如果right.leftHeight > right.leftHeight ，则先右旋right
+            if (this.right != null && this.right.leftHeight() > this.right.rightHeight()) {
+                this.right.rightRotate();
+            }
             this.leftRotate();
         }
 
         // 如果左树高，则右旋转
-        if (this.leftHeight() - this.rightHeight() > 1) {
+        else if (this.leftHeight() - this.rightHeight() > 1) {
+            // 如果left.左<left.右，则先左旋转left
+            if (this.left != null && this.left.leftHeight() < this.left.rightHeight()) {
+                this.left.leftRotate();
+            }
             this.rightRotate();
         }
     }
