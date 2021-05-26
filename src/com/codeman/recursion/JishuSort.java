@@ -48,7 +48,7 @@ public class JishuSort {
             for (int i = 0; i < countPerTong.length; i++) {
 
                 for (int k = 0; k < countPerTong[i]; k ++) {
-                    arr[tempIndex ++] = tongs[i][k];
+                    arr[tempIndex ++] = tongs[i][k]; // 这里有个隐藏点，就是桶先进先出，这样才有一个排序
 
                 }
                 countPerTong[i] = 0;
